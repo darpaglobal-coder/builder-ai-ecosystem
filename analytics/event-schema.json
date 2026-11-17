@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_not_active",
+  "collection_defaults": {
+    "optional_product_analytics": "denied_until_explicit_opt_in",
+    "google_analytics_tags": "blocked_until_analytics_consent",
+    "advertising_storage": "denied",
+    "ad_user_data": "denied",
+    "ad_personalization": "denied",
+    "essential_security_logs": "purpose_limited_minimized"
+  },
+  "lifecycle_states": [
+    "planned",
+    "configured",
+    "connected",
+    "ingesting",
+    "verified",
+    "paused",
+    "retired"
+  ],
+  "allowed_event_names": [
+    "page_view",
+    "sign_up",
+    "login_success",
+    "feature_used",
+    "checkout_started",
+    "purchase_completed",
+    "subscription_changed",
+    "support_requested"
+  ],
+  "required_envelope_fields": [
+    "event_id",
+    "event_name",
+    "schema_version",
+    "occurred_at_utc",
+    "source_asset_id",
+    "owner_tenant_id",
+    "purpose",
+    "authorization_reference",
+    "consent_state",
+    "environment"
+  ],
+  "optional_safe_parameters": [
+    "app_version",
+    "release_channel",
+    "feature_key",
+    "duration_bucket",
+    "coarse_region",
+    "result_category",
+    "currency_code",
+    "amount_bucket"
+  ],
+  "prohibited_fields": [
+    "name",
+    "email",
+    "phone",
+    "postal_address",
+    "precise_location",
+    "raw_ip",
+    "authentication_token",
+    "password",
+    "payment_card_data",
+    "health_data",
+    "private_message",
+    "full_url_with_query",
+    "free_form_text",
+    "stable_device_identifier",
+    "wallet_signing_material"
+  ],
+  "google_analytics": {
+    "enabled": false,
+    "measurement_id": null,
+    "api_secret_reference": null,
+    "consent_mode": "basic",
+    "load_only_after_analytics_opt_in": true,
+    "advertising_features": false,
+    "user_id": false,
+    "user_provided_data": false
+  },
+  "retention": {
+    "product_analytics_days": "owner_and_legal_review_required",
+    "security_audit_days": "policy_defined_and_approved",
+    "raw_logs_days": "shortest_operationally_necessary",
+    "deletion_workflow_required": true
+  },
+  "verification_gates": [
+    "consent_reject_blocks_google_requests",
+    "consent_withdrawal_stops_future_optional_events",
+    "event_payload_schema_validation",
+    "sensitive_field_redaction_tests",
+    "provider_deletion_test",
+    "tenant_isolation_test",
+    "dashboard_freshness_test",
+    "alert_delivery_test",
+    "backup_restore_test"
+  ]
+}
