@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "design_only",
+  "provider_count": 2,
+  "providers": [
+    {
+      "id": "google",
+      "display_name": "Google",
+      "protocol": "OAuth 2.0 / OpenID Connect",
+      "intended_registration_count_web": 1,
+      "callback_path": "/api/auth/callback/google",
+      "required_server_secrets": [
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET"
+      ],
+      "requested_sign_in_scopes": [
+        "openid",
+        "email",
+        "profile"
+      ],
+      "status": "not_configured",
+      "credential_owner_required": true
+    },
+    {
+      "id": "apple",
+      "display_name": "Apple",
+      "protocol": "Sign in with Apple / OpenID Connect",
+      "intended_registration_count_web": 1,
+      "callback_path": "/api/auth/callback/apple",
+      "required_server_secrets": [
+        "APPLE_SERVICE_ID",
+        "APPLE_TEAM_ID",
+        "APPLE_KEY_ID",
+        "APPLE_PRIVATE_KEY"
+      ],
+      "requested_sign_in_scopes": [
+        "name",
+        "email"
+      ],
+      "status": "not_configured",
+      "credential_owner_required": true,
+      "client_secret_rotation_required": true,
+      "services_id_website_url_limit_organization": 100,
+      "services_id_website_url_limit_individual": 10
+    }
+  ],
+  "app_inventory": {
+    "verified_first_party_web_surfaces_in_repository": 1,
+    "country_workspace_records": 195,
+    "verified_production_auth_brokers": 0,
+    "verified_active_google_clients": 0,
+    "verified_active_apple_services_ids": 0,
+    "interpretation": "Workspace records are not separate applications or OAuth registrations. Only owner-authorized discovered applications may be added."
+  },
+  "security_defaults": {
+    "authorization_code_with_pkce": true,
+    "state_and_nonce_validation": true,
+    "exact_redirect_uri_allowlist": true,
+    "tenant_scoped_authorization": true,
+    "auto_merge_accounts_by_email": false,
+    "default_privilege": "none",
+    "minimum_sign_in_scopes": true,
+    "secrets_in_source_control": false
+  }
+}
